@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 | **模型名称** | **模型参数** | **下载地址** |
 |--------------|---------------|--------------|
-| **Luban-10B-v1.0** | - **max_seq_len**: 2048<br>- **dim**: 4096<br>- **n_layers**: 48<br>- **n_heads**: 32 | [百度云盘下载](https://pan.baidu.com/s/1FkhcfS6CPreLZSgcZToBUg) 提取码：onk2|
+| **Luban-10B-v1.0** | - **max_seq_len**: 2048<br>- **dim**: 4096<br>- **n_layers**: 48<br>- **n_heads**: 32 | [百度云盘下载](https://pan.baidu.com/s/1ptwiP4PTbTLGbO10Tr3Ueg) 提取码：2m91|
 
 ### 测试模型生成
 

@@ -54,8 +54,8 @@ def top_k_top_p_filtering(logits, top_k=0, top_p=0.0, filter_value=-float('Inf')
 @torch.no_grad()
 def sample_generate(model, tokenizer, input_ids, past_key_values, max_gen_len, temperature=1.0, top_k=50, top_p=0.95):
     eos_token_id = tokenizer.eos_token_id
-    bos_token_id = tokenizer.bos_token_id
-    pad_token_id = tokenizer.pad_token_id
+    # bos_token_id = tokenizer.bos_token_id
+    # pad_token_id = tokenizer.pad_token_id
 
     outputs = model(
         input_ids=input_ids,
@@ -156,7 +156,7 @@ if __name__ == "__main__":
     start_time = time.time()
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--model_name_or_path", type=str, default="./model/Luban-10B"
+        "--model_name_or_path", type=str, default="../model/Luban-10B"
     )
     parser.add_argument("--data_root", type=str, default="test_data/")
     parser.add_argument("--activate_selective", action="store_true")

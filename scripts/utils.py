@@ -20,7 +20,7 @@ def load(model_name_or_path):
     model = AutoModelForCausalLM.from_pretrained(
         model_name_or_path,
         device_map="auto",
-        torch_dtype=torch.float16,
+        torch_dtype=torch.bfloat16,
     )
     
     if tokenizer.pad_token_id is None:

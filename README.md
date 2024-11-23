@@ -26,28 +26,75 @@
 
 ### 环境搭建
 
+推荐使用 **Miniconda** 来创建和管理独立的 Python 环境。以下是具体步骤：
+
+#### 1. 安装 Miniconda
+如果未安装 Miniconda，可参考以下步骤：
+1. 下载 Miniconda 安装包：
+   ```bash
+   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+   ```
+2. 安装 Miniconda：
+   ```bash
+   bash Miniconda3-latest-Linux-x86_64.sh
+   ```
+
+#### 2. 创建独立的 Python 环境
+```bash
+conda create -n luban_env python=3.9 
+conda activate luban_env
+```
+
+#### 3. 安装项目依赖
+在激活的环境中安装所需的依赖库：
 ```bash
 pip install -r requirements.txt
+```
+
+#### 4. 验证环境
+确保所有依赖安装成功，可以运行以下命令进行简单测试：
+```bash
+python -c "import torch; print(torch.__version__)"
 ```
 
 ### 预训练模型下载
 
 | **模型名称** | **模型参数** | **下载地址** |
 |--------------|---------------|--------------|
-| **Luban-10B-v1.0** | - **max_seq_len**: 2048<br>- **dim**: 4096<br>- **n_layers**: 48<br>- **n_heads**: 32 | [百度云盘下载](https://pan.baidu.com/s/1ptwiP4PTbTLGbO10Tr3Ueg) 提取码：2m91<br>[Hugging Face下载](https://huggingface.co/ziyanglichuan/Luban-10B-v1.0) |
+| **Luban-10B-v1.0** | - **max_seq_len**: 2048<br>- **dim**: 4096<br>- **n_layers**: 48<br>- **n_heads**: 32 | [百度云盘下载](https://pan.baidu.com/s/1ptwiP4PTbTLGbO10Tr3Ueg) 提取码：2m91|
 
 
-### 测试模型生成
+
+### 测试 Luban-10B 模型生成
+
+下面是两种方法测试 Luban-10B 模型生成效果的具体命令。 
+
+#### 1. 启用选择性激活机制的长文本快速生成
+此方法通过 `--activate_selective` 参数启用选择性激活机制，用于优化生成效率，适用于生成长文本内容。
 
 ```bash
-# 测试Luban模型
-# 长文本快速生成
-python python Luban-10B_generate.py --activate_selective --model_name_or_path ./model/Luban-10B
-# 传统生成方式
-python Luban-10B_generate.py --model_name_or_path ./model/Luban-10B
+python Luban-10B_generate.py \
+    --activate_selective \
+    --model_name_or_path ./model/Luban-10B-v1.0
 ```
 
-### 示例
+- **参数说明**：
+  - `--activate_selective`：启用选择性激活机制。
+  - `--model_name_or_path`：指定模型的路径，这里路径为 `./model/Luban-10B-v1.0`。
+
+#### 2. 使用传统生成方式
+此方法不启用任何优化机制，直接使用默认生成方式。适合对生成速度没有特殊需求或需要测试默认配置下生成质量的用户。
+
+```bash
+python Luban-10B_generate.py \
+    --model_name_or_path ./model/Luban-10B-v1.0
+```
+
+#### 注意事项
+确保已经下载并正确放置 Luban-10B-v1.0 模型文件到 `./model/` 路径中。
+
+
+### 生成示例
 
 ```bash
 # 示例一：Input：‘制造工艺设计是’

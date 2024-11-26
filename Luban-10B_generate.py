@@ -156,7 +156,7 @@ if __name__ == "__main__":
     start_time = time.time()
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--model_name_or_path", type=str, default="../model/Luban-10B"
+        "--model_name_or_path", type=str, default="../Luban-10B-v2/checkpoint-500"
     )
     parser.add_argument("--data_root", type=str, default="test_data/")
     parser.add_argument("--activate_selective", action="store_true")
